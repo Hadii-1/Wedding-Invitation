@@ -183,6 +183,39 @@
     animation: fadeUp 2s ease forwards 3s, floatImg 3s infinite alternate ease-in-out;
     pointer-events: none;
 }
+    .tent-img {
+    position: absolute;
+    bottom: -5px;
+    left: -5px;
+
+    width: 28%;
+    max-width: 300px;
+    min-width: 120px;
+
+    height: auto;
+
+    opacity: 0;
+    animation: fadeUp 2s ease forwards 3s, floatImg 3s infinite alternate ease-in-out;
+    pointer-events: none;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .tent-img {
+        width: 38%;
+        left: -10px;
+        bottom: -10px;
+    }
+}
+
+/* Small Mobiles */
+@media (max-width: 480px) {
+    .tent-img {
+        width: 45%;
+        left: -15px;
+        bottom: -15px;
+    }
+}
 
 /* Mobile */
 @media (max-width: 768px) {
@@ -263,6 +296,7 @@
 
     <!-- Bride & Groom Illustration PNG -->
     <img class="bride-groom" src="image.png" alt="Bride and Groom Illustration">
+    <img class="tent-img" src="tent.png" alt="Wedding Tent">
     <img src="border.png" class="card-border-img" alt="Decorative Border">
 
 </div>
@@ -352,5 +386,6 @@ animate();
 
 </body>
 </html>
+
 
 
