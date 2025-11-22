@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Wedding Invitation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+    body {
+        margin: 0;
+        background: #f7e6c4;
+        font-family: 'Poppins', sans-serif;
+        overflow-x: hidden;
+        position: relative;
+    }
+
+    /* Golden Loading Curtain */
+    #loader {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, #b8860b, #d4a017);
+        z-index: 9999;
+        animation: curtain 2s ease forwards;
+    }
+
+    @keyframes curtain {
+        0% {transform: translateY(0);}
+        100% {transform: translateY(-100%);}
+    }
+
+    /* Fireworks Canvas */
+    #fireworks {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -2;
+    }
+
+    /* Card */
+    .card {
+        width: 75%;
+        margin: 80px auto;
+        background: #fff8e8;
+        padding: 50px;
+        border-radius: 20px;
+        border: 8px double #b8860b;
+        text-align: center;
+        position: relative;
+        animation: fadeIn 2s ease-in-out;
+        box-shadow: 0 0 20px #d4a017;
+        overflow: hidden;
+    }
+    .card{
+        position :relative
+    }
+
+    @keyframes fadeIn {
+        from {opacity: 0; transform: scale(0.93);}
+        to {opacity: 1; transform: scale(1);}
+    }
+
+   .flowers {
+    position: absolute;
+    top: -40px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 50px;
+    animation: float 3s infinite alternate;
+    z-index: 10;   /* make sure they appear above everything */
+}
+
+    @keyframes float {
+        from {transform: translate(-50%, 0);}
+        to {transform: translate(-50%, 10px);}
+    }
+
+    .title {
+        font-family: 'Great Vibes', cursive;
+        font-size: 55px;
+        color: #b8860b;
+        margin-bottom: 20px;
+        opacity: 0;
+        animation: slideIn 1.8s ease forwards 1s;
+    }
+
+    @keyframes slideIn {
+        from {opacity: 0; transform: translateY(-20px);}
+        to {opacity: 1; transform: translateY(0);}
+    }
+
+    .names {
+        font-family: 'Great Vibes', cursive;
+        font-size: 65px;
+        color: #8a5a00;
+        margin: 20px 0;
+        opacity: 0;
+        animation: nameFade 2.5s ease forwards 1.5s, glow 2s infinite alternate 3s;
+    }
+
+    @keyframes glow {
+        from {text-shadow: 0 0 10px #e8c47a;}
+        to {text-shadow: 0 0 25px #b8860b;}
+    }
+
+    @keyframes nameFade {
+        from {opacity: 0; transform: translateY(20px);}
+        to {opacity: 1; transform: translateY(0);}
+    }
+
+    .details {
+        font-size: 19px;
+        color: #5a3e00;
+        margin-top: 15px;
+        opacity: 0;
+        animation: fadeUp 2s ease forwards 2.2s;
+    }
+
+    @keyframes fadeUp {
+        from {opacity: 0; transform: translateY(20px);}
+        to {opacity: 1; transform: translateY(0);}
+    }
+
+    .border-pattern {
+        width: 100%;
+        height: 8px;
+        background: repeating-linear-gradient(
+            45deg,
+            #b8860b,
+            #b8860b 10px,
+            #d4a017 10px,
+            #d4a017 20px
+        );
+        margin: 20px 0;
+        opacity: 0;
+        animation: fadeUp 2s ease forwards 2s;
+    }
+
+    a.map-link {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 12px 25px;
+        background: #b8860b;
+        color: white;
+        border-radius: 6px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: 0.3s;
+        opacity: 0;
+        animation: fadeUp 2s ease forwards 2.4s;
+    }
+    .card-border-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 300px;          /* adjust as you like */
+    z-index: 5;            /* above card */
+    pointer-events: none;  /* so it doesn't block clicks */
+}
+
+
+    a.map-link:hover {
+        background: #d4a017;
+        transform: scale(1.1);
+    }
+
+   /* Bride & Groom Illustration - Responsive */
+.bride-groom {
+    position: absolute;
+    bottom: -5px;
+    right: -5px;
+
+    width: 28%;        
+    max-width: 300px;  
+    min-width: 120px;  
+
+    height: auto;      
+
+    opacity: 0;
+    animation: fadeUp 2s ease forwards 3s, floatImg 3s infinite alternate ease-in-out;
+    pointer-events: none;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+    .bride-groom {
+        width: 38%;
+        right: -10px;
+        bottom: -10px;
+    }
+}
+
+/* Small Mobiles */
+@media (max-width: 480px) {
+    .bride-groom {
+        width: 45%;
+        right: -15px;
+        bottom: -15px;
+    }
+}
+
+    @keyframes floatImg {
+        from {transform: translateY(0);}
+        to {transform: translateY(-8px);}
+    }
+    /* Mobile height fix */
+@media (max-width: 768px) {
+    .card {
+        min-height: 90vh;   /* Card takes almost full phone screen */
+        padding-bottom: 120px; /* Space so bride/groom image doesn't overlap text */
+    }
+}
+
+/* Extra small phones */
+@media (max-width: 480px) {
+    .card {
+        min-height: 95vh;
+        padding: 30px 15px 150px;
+    }
+}
+
+</style>
+</head>
+<body>
+
+<div id="loader"></div>
+
+<canvas id="fireworks"></canvas>
+
+<div class="card">
+
+    <!-- FLOATING FLOWERS -->
+    <div class="flowers">🌸🌺🌸</div>
+
+    <!-- TITLE -->
+    <h1 class="title">Wedding Invitation</h1>
+
+    <div class="border-pattern"></div>
+
+    <!-- NAMES -->
+    <h2 class="names">Agha Zark Khan<br>&<br>Yagsha Sajjad</h2>
+
+    <div class="border-pattern"></div>
+
+    <!-- DETAILS -->
+    <p class="details">
+       By the grace and blessings of Allah Almighty, we request the honor of your presence at the wedding ceremony.<br>
+        
+    </p>
+
+    <p class="details">
+        📅 <strong>Date:</strong> 07 December 2025<br>
+        🕒 <strong>Time:</strong> 7:00 PM<br>
+        📍 <strong>Venue:</strong> Noor Jahan Marquee , Multan
+    </p>
+
+    <a class="map-link" target="_blank" href="https://www.google.com/maps/place/Noor+Jahan+Marquee/@30.2411462,71.480127,17z/data=!3m1!4b1!4m6!3m5!1s0x393b35b5a6d61db1:0xdc38070674085720!8m2!3d30.2411462!4d71.4827019!16s%2Fg%2F11j3766txb?entry=ttu&g_ep=EgoyMDI1MTEyMC4xIKXMDSoASAFQAw%3D%3D">
+        📍 View Venue on Google Maps
+    </a>
+
+    <!-- Bride & Groom Illustration PNG -->
+    <img class="bride-groom" src="image.png" alt="Bride and Groom Illustration">
+    <img src="border.png" class="card-border-img" alt="Decorative Border">
+
+</div>
+
+<script>
+/* Fireworks Animation */
+const canvas = document.getElementById("fireworks");
+const ctx = canvas.getContext("2d");
+canvas.width = innerWidth;
+canvas.height = innerHeight;
+
+let particles = [];
+
+function Firework() {
+    this.x = Math.random() * canvas.width;
+    this.y = canvas.height;
+    this.targetY = Math.random() * (canvas.height / 2);
+    this.speed = 3;
+    this.color = `hsl(${Math.random() * 360}, 100%, 60%)`;
+
+    this.update = () => {
+        this.y -= this.speed;
+        if (this.y <= this.targetY) {
+            for (let i = 0; i < 30; i++) {
+                particles.push(new Particle(this.x, this.y, this.color));
+            }
+            return true;
+        }
+        return false;
+    };
+
+    this.draw = () => {
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, 3, 0, Math.PI * 2);
+        ctx.fillStyle = this.color;
+        ctx.fill();
+    };
+}
+
+function Particle(x, y, color) {
+    this.x = x;
+    this.y = y;
+    this.speedX = (Math.random() - 0.5) * 5;
+    this.speedY = (Math.random() - 0.5) * 5;
+    this.life = 80;
+    this.color = color;
+
+    this.update = () => {
+        this.x += this.speedX;
+        this.y += this.speedY;
+        this.life--;
+        return this.life <= 0;
+    };
+
+    this.draw = () => {
+        ctx.globalAlpha = this.life / 80;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, 3, 0, Math.PI * 2);
+        ctx.fillStyle = this.color;
+        ctx.fill();
+        ctx.globalAlpha = 1;
+    };
+}
+
+let fireworks = [];
+
+function animate() {
+    requestAnimationFrame(animate);
+    ctx.fillStyle = "rgba(0,0,0,0.15)";
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    if (Math.random() < 0.05) fireworks.push(new Firework());
+
+    fireworks = fireworks.filter(f => {
+        f.draw();
+        return !f.update();
+    });
+
+    particles = particles.filter(p => {
+        p.draw();
+        return !p.update();
+    });
+}
+
+animate();
+</script>
+
+</body>
+</html>
